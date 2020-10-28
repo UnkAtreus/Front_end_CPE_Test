@@ -3,6 +3,14 @@ export const ROUTE_PATH = {
     TEXT: 'Home',
     LINK: '/',
   },
+  POSTS: {
+    TEXT: 'Posts',
+    LINK: '/posts',
+  },
+  POSTS_ID: {
+    TEXT: 'Posts',
+    LINK: '/posts/:groupId',
+  },
   LOGIN: {
     TEXT: 'Login',
     LINK: '/',

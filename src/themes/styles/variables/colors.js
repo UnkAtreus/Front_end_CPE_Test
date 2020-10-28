@@ -4,6 +4,7 @@ export default {
   GRAY_3: '#939393',
   GRAY_4: '#D9D9D9',
   GRAY_5: '#CAC8CE',
+  GRAY_6: '#18191A',
 
   BLUE_1: '#0B2F53',
   BLUE_2: '#7093AA',

@@ -2,8 +2,8 @@ import React from 'react'
 import ClassNames from 'classnames'
 import PropTypes from 'prop-types'
 
-import Swiper from 'react-id-swiper'
-import './css/swiper.min.css'
+// import Swiper from 'react-id-swiper';
+// import 'swiper/css/swiper.css';
 //https://www.npmjs.com/package/react-id-swiper
 
 import {
@@ -68,13 +68,13 @@ export class SwiperCarousel extends React.PureComponent {
         'swiper-carousel',
         className
       )}>
-        <Swiper
+        {/* <Swiper
           shouldSwiperUpdate={true}
           {...params}
           {...this.props}
         >
           {children}
-        </Swiper>
+        </Swiper> */}
       </SwiperCarouselStyle>
     )
   }
