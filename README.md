@@ -39,6 +39,8 @@ my-app
 
 # Commands
 ```
+// First Install
+npm install
 // Develop
 npm start
 
