@@ -14,7 +14,7 @@ import styled from 'styled-components'
 
 // Wrapper
 // ============================================================
-export const HomeStyled = styled.div`
+export const PostStyled = styled.div`
   /* Parent styles
   ------------------------------- */
 
@@ -29,7 +29,6 @@ export const HomeStyled = styled.div`
     background-color : #242526;
     display: flex;
     align-items: center;
-    border-bottom: #b3b3b329 solid 1px;
   }
 
   .btn-icon:hover {
@@ -111,6 +110,7 @@ export const HomeStyled = styled.div`
 
     >svg{
       font-size: 16px;
+      color: #ffffff;
     }
   }
 
@@ -151,23 +151,39 @@ export const HomeStyled = styled.div`
 
   .portlet-body {
     margin-top: 15px;
-    height: 60px;
+    height: auto;
     background-color : #242526;
     border-radius: 20px;
     align-items: center;
     display: flex;
-    padding: 16px;
-  }
-
-  .portlet-body:hover {
-    background-color: rgb(255 255 255 / 0.2);
-    transition: all 0.5s ease-out;
+    padding: 20px;
+    text-align: center;
   }
 
   .portlet-title {
     color : #ffffff;
     font-size: 20px;
   }
+
+  .portlet-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+
+    a {
+      display: contents;
+
+      .icon:hover {
+      background-color: rgb(255 255 255 / 0.2);
+      transition: all 0.5s ease-out;
+      }
+    }
+
+    
+  }
+
+
 
   /* Modifiers
   ------------------------------- */

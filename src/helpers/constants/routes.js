@@ -9,7 +9,7 @@ export const ROUTE_PATH = {
   },
   POSTS_ID: {
     TEXT: 'Posts',
-    LINK: '/posts/:groupId',
+    LINK: '/posts/:Id',
   },
   LOGIN: {
     TEXT: 'Login',

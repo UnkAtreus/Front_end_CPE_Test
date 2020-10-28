@@ -12,6 +12,7 @@ import {
   MainLayoutContainer,
 } from '../../containers'
 import HomeContainer from "../HomeContainer"
+import PostContainer from "../PostContainer"
 import {
   ROUTE_PATH,
 } from 'helpers'
@@ -29,6 +30,8 @@ export class RouteApp extends React.Component {
       <MainLayoutContainer>
         {/* Use props 'exact' for match single container(not share container) */}
         <Route exact path={ROUTE_PATH.HOME.LINK} component={HomeContainer} />
+        <Route exact path={ROUTE_PATH.POSTS.LINK} component={HomeContainer} />
+        <Route exact path={ROUTE_PATH.POSTS_ID.LINK} component={PostContainer} />
       </MainLayoutContainer>
     )
   }

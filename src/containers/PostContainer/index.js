@@ -1,46 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
-  HomeStyled
+  PostStyled
 } from './styled'
-import { Container , Button , Pagination } from "../../components";
+import { Container , Button  , Loading} from "../../components";
 import { BsCaretDownFill } from "react-icons/bs";
 import { IoMdArrowRoundBack , IoMdFlash } from "react-icons/io";
 import { RiSettings3Fill , RiCheckboxBlankCircleFill } from "react-icons/ri";
 import { postsController } from "apiService";
 
-const HomeContainer = ({ match, ...props }) => {
+const PostContainer = ({ match, ...props }) => {
 
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isNavChange, setIsNavChange] = useState(false);
   const [posts , setPosts ] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(10);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetchPosts();
+    GetPosts();
   }, []);
 
-  
-  const fetchPosts = async () => {
-    const posts_data = await postsController().getPostList('');
+  const GetPosts = async () => {
+    setLoading(true);
+    const posts_data = await postsController().getPostList(match.params.Id);
+    setLoading(false);
     console.log(posts_data);
     setPosts(posts_data);
   };
 
-  //Pagination
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-  console.log("currentPosts" , currentPosts);
-
-  const paginate = pageNumber => setCurrentPage(pageNumber);
-
   return (
     <React.Fragment>
-      <HomeStyled className="home">
+      <PostStyled className="home">
         <div className="navigation">
-
           <span>
             <Button onClick={() => {
               setIsNavOpen(!isNavOpen)
@@ -140,39 +131,37 @@ const HomeContainer = ({ match, ...props }) => {
               </div>
             </div>
             }
-            
-          
         </div>
+
+        { !loading && 
 
         <Container className="portlet">
           <div className="portlet-head">
             <div className="portlet-head__title">
-              Posts List
+              { posts.title }
             </div>
           </div>
-          {currentPosts.map((item, i) => (
-          <Link key={item.id} to={`/posts/${item.id}`} className="portlet-body">
+          <div className="portlet-body">
             <div className="portlet-title">
-              {item.title}
+              {posts.body}
             </div>
-          </Link>
-              
-        ))}
-        <Pagination
-          postsPerPage={postsPerPage}
-          totalPosts={posts.length}
-          paginate={paginate}
-          currentPage={currentPage}
-        />
+          </div>
+
+          <div className="portlet-footer">
+            <Link to={`/posts`}>
+            <div className="icon "><IoMdArrowRoundBack /></div>
+            <div className="portlet-title">
+              Back To Home Page
+            </div>
+            </Link>
+          </div>
         </Container>
 
-        
-        
-        
+        }
           
-      </HomeStyled>
+      </PostStyled>
     </React.Fragment>
   );
 };
 
-export default HomeContainer;
+export default PostContainer;

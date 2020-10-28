@@ -26,6 +26,7 @@ injectGlobal`
     background-color: #18191A;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: 'Nunito', sans-serif;
   }
 
   * {
