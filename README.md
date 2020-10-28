@@ -1,4 +1,4 @@
-# React starter project [Blank]
+# React front-end project
 * สร้าง Project structure โดยใช้ create-react-app
 * สร้าง Theme โดยใช้ [Styled Components](https://www.styled-components.com)
 * สร้าง Styleguide โดยใช้ [React Styleguidist](https://react-styleguidist.js.org)
@@ -42,9 +42,4 @@ my-app
 // Develop
 npm start
 
-// Styleguide
-npm run styleguide
-
-// Build
-npm run build
 ```
