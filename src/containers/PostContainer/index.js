@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import {
   PostStyled
 } from './styled'
-import { Container , Button  , Loading} from "../../components";
+import { Container , Button } from "../../components";
+import { CSSTransition } from "react-transition-group";
 import { BsCaretDownFill } from "react-icons/bs";
 import { IoMdArrowRoundBack , IoMdFlash } from "react-icons/io";
 import { RiSettings3Fill , RiCheckboxBlankCircleFill } from "react-icons/ri";
@@ -14,16 +15,14 @@ const PostContainer = ({ match, ...props }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isNavChange, setIsNavChange] = useState(false);
   const [posts , setPosts ] = useState([]);
-  const [loading, setLoading] = useState(false);
+  
 
   useEffect(() => {
     GetPosts();
   }, []);
 
   const GetPosts = async () => {
-    setLoading(true);
     const posts_data = await postsController().getPostList(match.params.Id);
-    setLoading(false);
     console.log(posts_data);
     setPosts(posts_data);
   };
@@ -42,98 +41,99 @@ const PostContainer = ({ match, ...props }) => {
 
           
          
-            { isNavOpen && !isNavChange &&
+            {isNavOpen &&
+          <CSSTransition in={isNavChange} timeout={300} classNames="fade" >
             <div className="nav-container">
-              <div className="nav-content">
-                <Button className="nav-button">
-                <div className="nav-row">
-                  <div className="nav-column">
-                    <div className="icon"><RiCheckboxBlankCircleFill /></div>
-                    <div className="nav-title">Menu Header
+              <CSSTransition in={!isNavChange} timeout={300} classNames="slide" unmountOnExit >
+                <div className="nav-content" >
+                  <Button className="nav-button">
+                  <div className="nav-row">
+                    <div className="nav-column">
+                      <div className="icon"><RiCheckboxBlankCircleFill /></div>
+                      <div className="nav-title">Menu Header
+                    </div>
+                      
+                    </div>
                   </div>
-                    
+                  </Button>
+                  <Button className="nav-button" onClick={() => {
+                  setIsNavChange(!isNavChange)
+                  }}>
+                  <div className="nav-row">
+                    <div className="nav-column">
+                      <div className="icon"><RiSettings3Fill /></div>
+                      <div className="nav-title">Clickable Button
+                    </div>
+                      
+                    </div>
                   </div>
+                  </Button>
                 </div>
-                </Button>
-                <Button className="nav-button" onClick={() => {
-                setIsNavChange(!isNavChange)
-                }}>
-                <div className="nav-row">
-                  <div className="nav-column">
-                    <div className="icon"><RiSettings3Fill /></div>
-                    <div className="nav-title">Clickable Button
-                  </div>
-                    
-                  </div>
-                </div>
-                </Button>
+                </CSSTransition>
               
-              </div>
-            </div>
-            }
-
-            { isNavOpen && isNavChange &&
-            <div className="nav-container">
-              <div className="nav-content">
-                <Button className="nav-button" onClick={() => {
-                setIsNavChange(!isNavChange)
-                }}>
-                <div className="nav-row">
-                  <div className="nav-column">
-                    <div className="icon"><IoMdArrowRoundBack /></div>
-                    <div className="nav-title__head">Clickable Back Button
+              <CSSTransition in={isNavChange} timeout={300} classNames="slide2" unmountOnExit >
+                <div className="nav-content">
+                  <Button className="nav-button" onClick={() => {
+                  setIsNavChange(!isNavChange)
+                  }}>
+                  <div className="nav-row">
+                    <div className="nav-column">
+                      <div className="icon"><IoMdArrowRoundBack /></div>
+                      <div className="nav-title__head">Clickable Back Button
+                    </div>
+                      
+                    </div>
                   </div>
-                    
+                  </Button>
+                  <Button className="nav-button">
+                  <div className="nav-row">
+                    <div className="nav-column">
+                      <div className="icon"><IoMdFlash /></div>
+                      <div className="nav-title">Item 1
+                    </div>
+                      
+                    </div>
                   </div>
+                  </Button>
+                  <Button className="nav-button">
+                  <div className="nav-row">
+                    <div className="nav-column">
+                      <div className="icon"><IoMdFlash /></div>
+                      <div className="nav-title">Item 2
+                    </div>
+                      
+                    </div>
+                  </div>
+                  </Button>
+                  <Button className="nav-button">
+                  <div className="nav-row">
+                    <div className="nav-column">
+                      <div className="icon"><IoMdFlash /></div>
+                      <div className="nav-title">Item 3
+                    </div>
+                      
+                    </div>
+                  </div>
+                  </Button>
+                  <Button className="nav-button">
+                  <div className="nav-row">
+                    <div className="nav-column">
+                      <div className="icon"><IoMdFlash /></div>
+                      <div className="nav-title">Item 4
+                    </div>
+                      
+                    </div>
+                  </div>
+                  </Button>
+                
                 </div>
-                </Button>
-                <Button className="nav-button">
-                <div className="nav-row">
-                  <div className="nav-column">
-                    <div className="icon"><IoMdFlash /></div>
-                    <div className="nav-title">Item 1
-                  </div>
-                    
-                  </div>
-                </div>
-                </Button>
-                <Button className="nav-button">
-                <div className="nav-row">
-                  <div className="nav-column">
-                    <div className="icon"><IoMdFlash /></div>
-                    <div className="nav-title">Item 2
-                  </div>
-                    
-                  </div>
-                </div>
-                </Button>
-                <Button className="nav-button">
-                <div className="nav-row">
-                  <div className="nav-column">
-                    <div className="icon"><IoMdFlash /></div>
-                    <div className="nav-title">Item 3
-                  </div>
-                    
-                  </div>
-                </div>
-                </Button>
-                <Button className="nav-button">
-                <div className="nav-row">
-                  <div className="nav-column">
-                    <div className="icon"><IoMdFlash /></div>
-                    <div className="nav-title">Item 4
-                  </div>
-                    
-                  </div>
-                </div>
-                </Button>
-              
-              </div>
-            </div>
-            }
+                </CSSTransition>
+            
+          </div>
+        
+          </CSSTransition>
+          }
         </div>
-
-        { !loading && 
 
         <Container className="portlet">
           <div className="portlet-head">
@@ -157,7 +157,7 @@ const PostContainer = ({ match, ...props }) => {
           </div>
         </Container>
 
-        }
+        
           
       </PostStyled>
     </React.Fragment>

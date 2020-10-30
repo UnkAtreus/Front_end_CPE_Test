@@ -66,12 +66,16 @@ export const PostStyled = styled.div`
     box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
     display: flex;
     border-radius: 8px;
+    overflow: hidden;
+    flex-direction: row;
+    opacity: 1;
     }
-
 
   .nav-content {
     padding: 16px 8px;
     width: 100%;
+    display: inline-table;
+    width: 360px;
   }
 
   .nav-row:hover {
@@ -181,6 +185,51 @@ export const PostStyled = styled.div`
     }
 
     
+  }
+
+  .slide-enter {
+    transform: translateX(-100%);
+  }
+  .slide-enter-active {
+    transform: translateX(0%);
+    transition: transform 300ms ease-in-out;
+  }
+  .slide-exit {
+    opacity: 1;
+  }
+  .slide-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+
+  .slide2-enter {
+    transform: translateX(100%);
+  }
+  .slide2-enter-active {
+    transform: translateX(-100%);
+    transition: transform 300ms ease-in-out;
+  }
+  .slide2-exit {
+    opacity: 1;
+  }
+  .slide2-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+
+  .fade-enter {
+    height: 136px;
+  }
+  .fade-enter-active {
+    height: 322px;
+    transition: height 0.3s ease-in;
+  }
+  .fade-exit {
+    height: 322px;
+  }
+  .fade-exit-active {
+    height: 136px;
+    transition: height 0.3s ease-out;
   }
 
 
